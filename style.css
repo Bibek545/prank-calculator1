@@ -1,0 +1,130 @@
+:root{
+    --primaryClr: green;
+    --secondaryClr: lightgreen;
+    --trClr: yellow;
+}
+* {
+    box-sizing: border-box;
+}
+body{
+    margin: 0;
+    font-size: 1.2rem;
+}
+.wrapper {
+    min-height: 100vh;
+    background: linear-gradient(var(--trClr), var(--primaryClr));
+    
+}
+.flex-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.calculator {
+    background-color:rgb(225, 218, 218);
+    /* height: 600px; */
+    width: 600px;
+    color: white;
+    padding: 2rem 1.5rem;
+    border-radius: 10px;
+    display: grid;
+    gap: 1rem;
+    transform: perspective(70rem) rotateX(30deg);
+    grid-template-areas:  
+    "display display display display"
+    "ac c per divide"
+    "btn7 btn8 btn9 x"
+    "btn4 btn5 btn6 minus"
+    "btn1 btn2 btn3 plus"
+    "zero dot equals equals";
+}
+
+.display {
+    /* background: var(--sec); */
+    padding: 1rem;
+    font-size: 2rem;
+    text-align: end;
+    font-weight: bolder;
+    background: var(--secondaryClr);
+    box-shadow: 0px 10px 5px rgba(54, 48, 48, 0.53);
+    grid-area: display;
+}
+
+.calculator .btn {
+    background: var(--trClr);
+    height: 50px;
+    color: black;
+    border-radius: 5%;
+    
+    
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    box-shadow: 0px 10px 5px rgba(54, 48, 48, 0.53);
+}
+
+.calculator .btn:hover {
+    cursor: pointer;
+    background: var(--secondaryClr);
+    transition: all 0.3s;
+}
+
+.btn-ac{
+    grid-area: ac;
+}
+.btn-c{
+    grid-area: c;
+}
+.btn-per{
+    grid-area: per;
+}
+.btn-divide{
+    grid-area: divide;
+}
+.btn-7{
+    grid-area: btn7;
+}
+.btn-8{
+    grid-area: btn8;
+}
+.btn-9{
+    grid-area: btn9;
+}
+.btn-x{
+    grid-area: x;
+}
+.btn-4{
+    grid-area: btn4;
+}
+.btn-5{
+    grid-area: btn5;
+}
+.btn-6{
+    grid-area: btn6;
+}
+.btn-minus{
+    grid-area: minus;
+}
+.btn-1{
+    grid-area: btn1;
+}
+.btn-2{
+    grid-area: btn2;
+}
+.btn-3{
+    grid-area: btn3;
+}
+.btn-plus{
+    grid-area: plus;
+}
+.btn-zero{
+    grid-area: zero;
+}
+.btn-dot{
+    grid-area: dot;
+}
+.btn-equals{
+    grid-area: equals;
+}
