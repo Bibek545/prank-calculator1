@@ -2,6 +2,11 @@ const allButtonsEl = document.querySelectorAll(".btn");
 let strToDisplay = "";
 const displayElm = document.querySelector(".display")
 
+
+
+const operators = ["%","/","*","-","+"];
+
+let lastOperator = " ";
 const buttonAdtion = (value)=> {
  console.log(value);
 
@@ -16,9 +21,45 @@ const buttonAdtion = (value)=> {
  }
  
  if(value === "=") {
+    lastOperator = "";
+    const lastChar = strToDisplay[strToDisplay.length - 1];
+
+    // check i fthe last character is operator and ignore
+    if(operators.includes(lastChar)) {
+        strToDisplay = strToDisplay.slice(0, -1);
+
+    }
     return displayTotal();
 
  }
+
+
+//  show only last clicked charcter
+
+if(operators.includes(value)) {
+    lastOperator = value;
+    const lastChar = strToDisplay[strToDisplay.length - 1];
+
+    if(operators.includes(lastChar)) {
+        strToDisplay = strToDisplay.slice(0, -1);
+
+    }
+
+}
+// handling the dot click 
+if (value === ".") {
+    const lastOperatorIndex = strToDisplay.lastIndexOf(lastOperator);
+    const lastNumberSet = strToDisplay.slice(lastOperatorIndex);
+    console.log(lastNumberSet);
+
+    if(lastNumberSet.includes(".")) {
+        return;
+    }
+    
+    if(!lastOperator && strToDisplay.includes(".")) {
+        return;
+    }
+}
 
  strToDisplay += value;
  display(strToDisplay);
@@ -40,8 +81,17 @@ const display = (str) => {
 
 // calculate the total value
 const displayTotal = () => {
+
+    const extraValue = randomValue();
     const total = eval(strToDisplay)
    strToDisplay = total;
     display(strToDisplay);
     
 };
+
+
+// 
+const randomValue = () => {
+    const num = Math.round(Math.random() * 10); // will generate 0 - 10 
+    return num < 8 ? num : 0;
+}
